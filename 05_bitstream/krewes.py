@@ -1,3 +1,5 @@
+# preliminary work before class
+
 """ 
 Gitae Park, Gabriel Thompson
 SoftDev
