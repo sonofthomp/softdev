@@ -1,35 +1,38 @@
-# preliminary work before class
-
-""" 
-Gitae Park, Gabriel Thompson
+'''
+Gitae Park & Gabriel Thompson
 SoftDev
-05_bitstream
-2022-09-28
-time spent: 0.1 hours
+K05 -- krewes/Making a random generator to return the name of a student given a file krewes.txt
+2022-09-29
+.3 hrs
+OP Summary for randomdevo()
+1) Read the txt file
+2) Split the txt at all "@@@" into lists of all individuals
+3) Iterated through list and split at "$$$" into lists of pd, devos, ducky
+4) Assigned Devos as key in dictionary devo and list of pd and ducky as value of each key
+5) Randomly chose a key and printed devos name, pd, and ducky name
 
-DISCO: 
- - 
+Q/C/C
+How do I make a dictionary within a dictionary?
 
-QCC:
- - 
+DISCO
+.split method
+how to assign keys and values in a dictionary
+'''
 
-OPS SUMMARY:
- 1. 
-"""
 
-f = open('krewes.txt')
-content = f.read()[:-1]
-periods = {}
+import random
+f = open('krewes.txt', 'r')
+content = f.read()
 
-for devo in content.split('@@@'):
-	details = devo.split('$$$')
-	period = int(details[0])
-	name = details[1]
-	ducky = details[2]
+each = content.split("@@@")
 
-	if not periods.get(period):
-		periods[period] = {}
+devos = {}
 
-	periods[period][name] = ducky
+for x in each :
+    individual = x.split("$$$")
+    devos[individual[1]] = [individual[0], individual[2]]
+    
+rand = random.choice(list(devos.keys()))
 
-print(periods)
+
+print(rand + " in pd " + devos[rand][0] + " with ducky " + devos[rand][1])
