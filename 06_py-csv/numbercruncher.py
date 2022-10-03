@@ -1,16 +1,36 @@
 import random
 
-content = open('occupations.csv', 'r').readlines()
-content = content[1:]
+opened_file = open('occupations.csv', 'r')
+content = opened_file.read()
 
-occupations = {}
+lines = content.split("\n")
 
-for line in content:
-	end_comma_index = line[::-1].index(',')
-	comma_index = len(line) - end_comma_index
-	occupation = line[:comma_index - 1]
-	percent = float(line[comma_index:])
+percentages = {}
 
-	occupations[occupation] = percent
+for line in lines:
+    if line == "" :
+        continue
+    if line[0] == "\"" :
+        job_percent = line.split("\",")
+    else:
+        job_percent = line.split(",")
 
-print(occupations)
+    job = job_percent[0]
+    percent = job_percent[1]
+    percentages[job] = percent
+    
+total = percentages["Total"]
+
+percentages.pop("Job Class")
+percentages.pop("Total")
+
+r = random.random() * float(total)
+
+sum = 0
+for key in percentages:
+     sum += float(percentages[key])
+     if r < sum:
+        if key[0] == "\"" :
+            key = key[1:]
+        print(key)
+        break
