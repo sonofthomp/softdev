@@ -1,0 +1,43 @@
+====================================
+               NOTES:
+====================================
+
+PART 1: Team Ian Jiang & Kevin Li
+
+Notes:
+• 05_bitstream
+   - They had a similar approach to us in making variables for the devo's period, name, and ducky
+   - They used the .update() function to change a value given a key
+   - They put their entire process inside of a function
+   - They wrote "if period not in d.keys()" which is an interesting placement of "not" that I'm
+     not familiar with
+   - On line 34, they stringify the entire output, rather than each section of it individually
+
+• 06_py-csv
+   - For loading in the data, they reuse the same variable name to store the opened file, then
+     the content of the file, and then a list containing each line separately. This is an
+     example of how Python's dynamic typing can be used.
+   - They use .remove() to remove the first item of the occupations_file list, instead of "del"
+     or list splicing
+   - To do a weighted random, they *subtract* from a counter until it reaches 0, instead of
+     adding to a counter until it reaches the threshold. This is interesting because it actually
+     uses one less variable than the other approach, since the same variable for the counter is
+     also used for the threshold.
+
+
+PART 2: Team Ravindra Mangar and Samantha Hua
+
+Notes:
+• 05_bitstream
+   - IT TOOK THEM 1.5 HOURS
+   - They encapsulate the entire parsing of the file within a try/except statement, and they give
+     the extremely vague error message in the passive voice "An Error Has Occured"
+   - They use a function for randomly choosing a devo, so that they can run it several times
+     easily
+   - They remove empty lines using the .replace() method. Smart.
+
+• 06_py-csv
+   - Their Python code is a lot easier to read than it was in 05_bitstream
+   - They use the next() function to skip past the first line of the file
+   - They use the csv library to load in the csv data
+   - They use the weight functionality of random.choices()
