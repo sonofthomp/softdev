@@ -5,7 +5,8 @@
 # time spent: 0.7 hrs
 
 from flask import Flask, render_template
-import requests
+from urllib.request import urlopen
+from json import loads
 
 app = Flask(__name__)
 
@@ -15,7 +16,8 @@ key = key.strip() #removing white space
 @app.route("/")
 def index():
     api_url = f"https://api.nasa.gov/planetary/apod?api_key={key}" # url with api key
-    web = requests.get(api_url).json() #json data of api_url, web is a dictionary
+    web = urlopen(api_url).read() #urlopen() returns website object, read() makes it a string
+    web = loads(web) #turns string into json
     img_url = web["url"] #gets url of img from web dictionary
     img_title = web["title"]
     img_explanation = web["explanation"]
